@@ -30,7 +30,7 @@ const Home: React.FC<HomeProps> = ({ users }) => {
               <p className='md:text-2xl sm:text-xl text-left mt-3 w-2/3 animate-fade-in-up'>법률 및 인사관리 부담없이 1주일 이내에 원격으로 채용해보세요.</p>
               <p className='md:text-2xl sm:text-xl text-left mt-3 w-2/3'>개발자가 필요하신가요?</p>
             </div>
-            <div>
+            <div className='bg-green-300'>
               <CardSection />
             </div>
           </div>

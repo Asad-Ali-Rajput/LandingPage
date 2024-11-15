@@ -27,11 +27,11 @@ const CardSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex space-x-8 justify-center py-10">
+    <div className="flex space-x-0 justify-center py-10">
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`"bg-black text-white p-6 rounded-md max-w-xs transition-opacity duration-500", ${fadeIn ? "opacity-100" : "opacity-0"}`}
+          className={`"bg-black text-white py-6 px-2 rounded-md min-w-md transition-opacity duration-500", ${fadeIn ? "opacity-100" : "opacity-0"}`}
           style={{ transitionDelay: `${index * 500}ms` }}>
           <h2 className="text-lg font-bold mb-2 border-t-2">{card.title}</h2>
           <p className="text-sm">{card.description}</p>
