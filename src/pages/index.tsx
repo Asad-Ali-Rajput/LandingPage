@@ -10,9 +10,7 @@ import Tooltip2 from '@/components/atoms/Tooltip2';
 import SlidingRow from '@/components/molecules/Sliding';
 
 type UserData = {
-  id: number;
-  name: string;
-  position: string;
+  cards: object,
 };
 
 type HomeProps = {
@@ -52,14 +50,33 @@ const Home: React.FC<HomeProps> = ({ users }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const response = await fetch('http://localhost:3000/api/users');
-  const users: UserData[] = await response.json();
-  console.log("users", users)
-  return {
-    props: {
-      users,
-    },
-  };
+  try {
+    const response = await fetch('http://localhost:3000/api/users');
+    
+    // Check if the response is successful
+    if (!response.ok) {
+      throw new Error(`Failed to fetch users: ${response.statusText}`);
+    }
+    
+    const users: UserData[] = await response.json();
+    console.log("users", users);
+    
+    return {
+      props: {
+        users,
+      },
+    };
+  } catch (error) {
+      console.error("Error fetching users:", error instanceof Error ? error.message : String(error));
+
+      // Optionally, return a fallback or empty users array to prevent rendering issues
+      return {
+        props: {
+          users: [],
+          error: error instanceof Error ? error.message : "An unknown error occurred",
+        },
+      };
+    }
 };
 
 export default Home;
