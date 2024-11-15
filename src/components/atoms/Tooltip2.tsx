@@ -14,7 +14,7 @@ const Tooltip2 = () => {
 
   return (
     <div
-      className={`absolute z-10 left-[65vw] top-36 transform -translate-x-1/2 text-cyan-300 bg-white text-sm py-1 px-3 rounded shadow-lg transition-opacity duration-300 ${
+      className={`absolute z-10 left-[65vw] top-28 transform -translate-x-1/2 text-cyan-300 bg-white text-sm py-1 px-3 rounded shadow-lg transition-opacity duration-300 ${
         fadeIn ? "opacity-100" : "opacity-0"
       }`}
     >

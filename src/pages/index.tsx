@@ -27,8 +27,8 @@ const Home: React.FC<HomeProps> = ({ users }) => {
             <div>
               <h2 className='md:text-5xl sm:text-2xl text-left animate-fade-in-up'>최고의 실력을 가진 외국인 인재를 찾고 계신가요?</h2>
               <Tooltip />
-              <p className='md:text-2xl sm:text-xl text-left my-6 w-2/3 animate-fade-in-up'>법률 및 인사관리 부담없이 1주일 이내에 원격으로 채용해보세요.</p>
-              <p className='md:text-2xl sm:text-xl text-left my-4 w-2/3'>개발자가 필요하신가요?</p>
+              <p className='md:text-2xl sm:text-xl text-left mt-3 w-2/3 animate-fade-in-up'>법률 및 인사관리 부담없이 1주일 이내에 원격으로 채용해보세요.</p>
+              <p className='md:text-2xl sm:text-xl text-left mt-3 w-2/3'>개발자가 필요하신가요?</p>
             </div>
             <div>
               <CardSection />
