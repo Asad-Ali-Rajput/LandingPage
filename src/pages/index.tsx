@@ -1,115 +1,65 @@
-import Image from "next/image";
-import localFont from "next/font/local";
+// pages/index.tsx
+import { GetServerSideProps } from 'next';
+import Image from 'next/image';
+import Layout from '@/components/template/Layout';
+import bg from '@/assets/Asset 1@2x 1.png';
+import CardSection from '@/components/molecules/CardSection';
+import Tooltip from '@/components/atoms/Tooltip';
+import CardSlider from '@/components/organisms/CardSlider';
+import Tooltip2 from '@/components/atoms/Tooltip2';
+import SlidingRow from '@/components/molecules/Sliding';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+type UserData = {
+  id: number;
+  name: string;
+  position: string;
+};
 
-export default function Home() {
+type HomeProps = {
+  users: UserData[];
+};
+
+const Home: React.FC<HomeProps> = ({ users }) => {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <Layout>
+      <div className="text-center w-screen h-screen">
+        <Image className='absolute -z-10 bg-ground' src={bg} alt='' />
+        <div className='grid md:grid-cols-3 sm:grid-cols-1 items-center w-full h-full px-4'>
+          <div>
+            <div>
+              <h2 className='md:text-5xl sm:text-2xl text-left animate-fade-in-up'>최고의 실력을 가진 외국인 인재를 찾고 계신가요?</h2>
+              <Tooltip />
+              <p className='md:text-2xl sm:text-xl text-left my-6 w-2/3 animate-fade-in-up'>법률 및 인사관리 부담없이 1주일 이내에 원격으로 채용해보세요.</p>
+              <p className='md:text-2xl sm:text-xl text-left my-4 w-2/3'>개발자가 필요하신가요?</p>
+            </div>
+            <div>
+              <CardSection />
+            </div>
+          </div>
+          <div className='flex justify-center items-center col-span-2 h-full'>
+            <Tooltip2 />
+            <div className='w-1/2'>
+              <CardSlider cards={users} />
+            </div>
+          </div>
+          <div className="absolute top-[80vh] col-span-3">
+            <SlidingRow />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </Layout>
   );
-}
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const response = await fetch('http://localhost:3000/api/users');
+  const users: UserData[] = await response.json();
+  console.log("users", users)
+  return {
+    props: {
+      users,
+    },
+  };
+};
+
+export default Home;
